@@ -1,0 +1,38 @@
+<h1>pylokit</h1>
+
+<p>A python CFFI wrapper for LibreOfficeKit. Tested with both cpython2 and cpython3,
+need confirmation but should work fine in pypy too.</p>
+
+<h2>Requirements</h2>
+
+<p>An installation of LibreOffice >= 4.3.0 is required on the same machine</p>
+
+<h2>Installation</h2>
+
+<p><code>bash
+pip install pylokit
+</code></p>
+
+<h2>Example</h2>
+
+<p>A basic conversion from a rtf file to a doc:
+```python
+from pylokit import Office</p>
+
+<p>lo_path = "/path/to/libreoffice/program/dir"</p>
+
+<p>lo = Office(lo_path)
+doc = lo.documentLoad("myfile.rtf")
+doc.saveAs("myfile.doc")
+```</p>
+
+<p>Same conversion passing an explicit format and filter options:
+```python
+from pylokit import Office</p>
+
+<p>lo_path = "/path/to/libreoffice/program/dir"</p>
+
+<p>lo = Office(lo_path)
+doc = lo.documentLoad("myfile.rtf")
+doc.saveAs("myfile.doc", fmt="docx", options="skipImages")
+```</p>
