@@ -85,6 +85,9 @@ class Document(object):
             raise LoKitExportError(self.office.getError())
         return saved
 
+    def __del__(self):
+        self.doc.pClass.destroy(self.doc)
+
 
 class Office(object):
     def __init__(self, lo_path):
@@ -111,3 +114,7 @@ class Office(object):
 
     def getError(self):
         return self.ffi.string(self.lokit.pClass.getError(self.lokit))
+
+    def __del__(self):
+        if hasattr(self, "lokit"):
+            self.lokit.pClass.destroy(self.lokit)

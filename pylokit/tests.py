@@ -23,22 +23,26 @@ class LokitTest(unittest.TestCase):
         lo = Office(self.lo_path)
         doc = lo.documentLoad("tests/foo.doc")
         self.assertRaises(LoKitExportError, doc.saveAs, "")
+        del doc
 
     def test_wrong_filter(self):
         lo = Office(self.lo_path)
         doc = lo.documentLoad("tests/foo.doc")
         self.assertRaises(LoKitExportError, doc.saveAs, "tests/out.rtf", fmt="foobar")
+        del doc
 
     def test_wrong_options(self):
         lo = Office(self.lo_path)
         doc = lo.documentLoad("tests/foo.doc")
         self.assertRaises(LoKitExportError, doc.saveAs, "tests/out.rtf", options="foobar")
+        del doc
 
     def test_filter_and_options(self):
         lo = Office(self.lo_path)
         doc = lo.documentLoad("tests/foo.doc")
         doc.saveAs("tests/out.docx", fmt="docx", options="SkipImages")
         os.unlink("tests/out.docx")
+        del doc
 
     def test_multiple_calls(self):
         lo = Office(self.lo_path)
@@ -47,6 +51,13 @@ class LokitTest(unittest.TestCase):
         doc.saveAs("tests/out.pdf")
         os.unlink("tests/out.docx")
         os.unlink("tests/out.pdf")
+        doc = lo.documentLoad("tests/foo.doc")
+        doc.saveAs("tests/out.pdf")
+        os.unlink("tests/out.pdf")
+        del doc
+
+    def tearDown(self):
+        assert os.path.exists("tests/.~lock.foo.doc#") == False
 
 
 if __name__ == '__main__':
