@@ -20,7 +20,7 @@ setup(
     name='pylokit',
     version=VERSION,
     description='Python CFFI wrapper for LibreOfficeKit',
-    long_description=open(os.path.join(os.path.dirname(__file__), 'README')).read(),
+    long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
     url="https://github.com/xrmx/pylokit",
     license='MPL 2.0',
     platforms=['OS Independent'],
