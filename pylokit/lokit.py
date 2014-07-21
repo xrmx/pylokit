@@ -70,6 +70,12 @@ class Document(object):
         self.doc = doc
         self.office = office
 
+    def __enter__(self):
+        return self
+
+    def __exit__(self, type, value, tb):
+        self.doc.pClass.destroy(self.doc)
+
     def saveAs(self, url, fmt=None, options=None):
         ffi = self.office.ffi
         if fmt:
@@ -84,9 +90,6 @@ class Document(object):
         if not saved:
             raise LoKitExportError(self.office.getError())
         return saved
-
-    def __del__(self):
-        self.doc.pClass.destroy(self.doc)
 
 
 class Office(object):
@@ -115,6 +118,9 @@ class Office(object):
     def getError(self):
         return self.ffi.string(self.lokit.pClass.getError(self.lokit))
 
-    def __del__(self):
+    def __enter__(self):
+        return self
+
+    def __exit__(self, type, value, tb):
         if hasattr(self, "lokit"):
             self.lokit.pClass.destroy(self.lokit)

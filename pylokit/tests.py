@@ -21,40 +21,35 @@ class LokitTest(unittest.TestCase):
 
     def test_no_output_file(self):
         lo = Office(self.lo_path)
-        doc = lo.documentLoad("tests/foo.doc")
-        self.assertRaises(LoKitExportError, doc.saveAs, "")
-        del doc
+        with lo.documentLoad("tests/foo.doc") as doc:
+            self.assertRaises(LoKitExportError, doc.saveAs, "")
 
     def test_wrong_filter(self):
-        lo = Office(self.lo_path)
-        doc = lo.documentLoad("tests/foo.doc")
-        self.assertRaises(LoKitExportError, doc.saveAs, "tests/out.rtf", fmt="foobar")
-        del doc
+        with Office(self.lo_path) as lo:
+            with lo.documentLoad("tests/foo.doc") as doc:
+                self.assertRaises(LoKitExportError, doc.saveAs, "tests/out.rtf", fmt="foobar")
 
     def test_wrong_options(self):
-        lo = Office(self.lo_path)
-        doc = lo.documentLoad("tests/foo.doc")
-        self.assertRaises(LoKitExportError, doc.saveAs, "tests/out.rtf", options="foobar")
-        del doc
+        with Office(self.lo_path) as lo:
+            with lo.documentLoad("tests/foo.doc") as doc:
+                self.assertRaises(LoKitExportError, doc.saveAs, "tests/out.rtf", options="foobar")
 
     def test_filter_and_options(self):
-        lo = Office(self.lo_path)
-        doc = lo.documentLoad("tests/foo.doc")
-        doc.saveAs("tests/out.docx", fmt="docx", options="SkipImages")
-        os.unlink("tests/out.docx")
-        del doc
+        with Office(self.lo_path) as lo:
+            with lo.documentLoad("tests/foo.doc") as doc:
+                doc.saveAs("tests/out.docx", fmt="docx", options="SkipImages")
+                os.unlink("tests/out.docx")
 
     def test_multiple_calls(self):
-        lo = Office(self.lo_path)
-        doc = lo.documentLoad("tests/foo.doc")
-        doc.saveAs("tests/out.docx", fmt="docx", options="SkipImages")
-        doc.saveAs("tests/out.pdf")
-        os.unlink("tests/out.docx")
-        os.unlink("tests/out.pdf")
-        doc = lo.documentLoad("tests/foo.doc")
-        doc.saveAs("tests/out.pdf")
-        os.unlink("tests/out.pdf")
-        del doc
+        with Office(self.lo_path) as lo:
+            with lo.documentLoad("tests/foo.doc") as doc:
+                doc.saveAs("tests/out.docx", fmt="docx", options="SkipImages")
+                doc.saveAs("tests/out.pdf")
+                os.unlink("tests/out.docx")
+                os.unlink("tests/out.pdf")
+            with lo.documentLoad("tests/foo.doc") as doc:
+                doc.saveAs("tests/out.pdf")
+                os.unlink("tests/out.pdf")
 
     def tearDown(self):
         assert os.path.exists("tests/.~lock.foo.doc#") == False
