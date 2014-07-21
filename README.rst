@@ -1,8 +1,8 @@
 pylokit
 =======
 
-A python CFFI wrapper for LibreOfficeKit. Tested with both cpython2 and
-cpython3, need confirmation but should work fine in pypy too.
+A python CFFI wrapper for LibreOfficeKit. Tested in both cpython2 and
+cpython3, works mostly fine in pypy.
 
 Requirements
 ------------
