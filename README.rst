@@ -45,3 +45,8 @@ Same conversion passing an explicit format and filter options:
 
 The usage of a context manager is needed to properly handle LibreOfficeKit
 file locking.
+
+Acknowledgements
+----------------
+
+Project inspired by Olly Betts' `lloconv <https://github.com/ojwb/lloconv>`_.
