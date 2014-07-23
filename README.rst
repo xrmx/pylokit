@@ -7,7 +7,7 @@ cpython3, and pypy.
 Requirements
 ------------
 
-An installation of LibreOffice >= 4.3.0 is required on the same machine
+An installation of LibreOffice >= 4.3.0 is required on the same machine.
 
 Installation
 ------------
@@ -16,8 +16,8 @@ Installation
 
     pip install pylokit
 
-Example
--------
+Examples
+--------
 
 A basic conversion from a rtf file to a doc:
 
