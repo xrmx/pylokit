@@ -20,3 +20,5 @@ if __name__ == '__main__':
     lo = Office(lo_path)
     doc = lo.documentLoad(args.input_file)
     doc.saveAs(args.output_file, fmt=args.format, options=args.options)
+
+    os._exit(0)

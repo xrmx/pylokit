@@ -24,6 +24,7 @@ A basic conversion from a rtf file to a doc:
 .. code:: python
 
     from pylokit import Office
+    import os
 
     lo_path = "/path/to/libreoffice/program/dir"
 
@@ -31,11 +32,14 @@ A basic conversion from a rtf file to a doc:
         with lo.documentLoad("myfile.rtf") as doc:
             doc.saveAs("myfile.doc")
 
+    os._exit(0)
+
 Same conversion passing an explicit format and filter options:
 
 .. code:: python
 
     from pylokit import Office
+    import os
 
     lo_path = "/path/to/libreoffice/program/dir"
 
@@ -43,8 +47,12 @@ Same conversion passing an explicit format and filter options:
         with lo.documentLoad("myfile.rtf") as doc:
             doc.saveAs("myfile.doc", fmt="docx", options="skipImages")
 
+    os._exit(0)
+
 The usage of a context manager is needed to properly handle LibreOfficeKit
 file locking.
+The use of _exit() instead of default exit() is required because in some
+circumstances LibreOffice segfaults on process exit.
 
 Acknowledgements
 ----------------
