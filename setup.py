@@ -29,6 +29,7 @@ setup(
         'cffi',
         'six',
     ],
+    test_suite='pylokit.tests',
     packages=find_packages(),
     include_package_data=True,
     zip_safe = False,
