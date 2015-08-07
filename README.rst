@@ -9,6 +9,8 @@ Requirements
 
 An installation of LibreOffice >= 4.3.0 is required on the same machine.
 
+If you are using cpython you need *libffi-dev* in order to compile CFFI.
+
 Installation
 ------------
 
