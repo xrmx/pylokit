@@ -11,7 +11,7 @@ import six
 import os
 
 
-TARGET_LIB = ("libsofficeapp.so", "liblibmergedlo.so")
+TARGET_LIB = ("libsofficeapp.so", "libmergedlo.so")
 
 LOKIT_CDEFS = """
 typedef struct _LibreOfficeKit LibreOfficeKit;
