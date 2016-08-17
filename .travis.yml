@@ -13,5 +13,5 @@ before_install:
 script:
     python setup.py test
 
-sudo: false
+sudo: required
 
