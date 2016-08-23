@@ -1,7 +1,7 @@
 import unittest
 import os
 
-from lokit import Office, LoKitInitializeError, LoKitImportError, LoKitExportError
+from pylokit import Office, LoKitInitializeError, LoKitImportError, LoKitExportError
 
 TEST_DIR = os.path.dirname(__file__)
 
