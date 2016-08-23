@@ -21,17 +21,17 @@ class LokitTest(unittest.TestCase):
         self.assertRaises(LoKitInitializeError, Office, "wronglopath")
 
     def test_init(self):
-        lo = Office(self.lo_path)
-        self.assertIsNotNone(lo)
+        with Office(self.lo_path) as lo:
+            self.assertIsNotNone(lo)
 
     def test_no_input_file(self):
-        lo = Office(self.lo_path)
-        self.assertRaises(LoKitImportError, lo.documentLoad, "foo")
+        with Office(self.lo_path) as lo:
+            self.assertRaises(LoKitImportError, lo.documentLoad, "foo")
 
     def test_no_output_file(self):
-        lo = Office(self.lo_path)
-        with lo.documentLoad(self.test_doc) as doc:
-            self.assertRaises(LoKitExportError, doc.saveAs, "")
+        with Office(self.lo_path) as lo:
+            with lo.documentLoad(self.test_doc) as doc:
+                self.assertRaises(LoKitExportError, doc.saveAs, "")
 
     def test_wrong_filter(self):
         with Office(self.lo_path) as lo:
