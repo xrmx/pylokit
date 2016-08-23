@@ -1,5 +1,7 @@
 # http://docs.travis-ci.com/user/languages/python/
 
+dist: trusty
+
 language: python
 python:
     - 2.7
@@ -8,7 +10,9 @@ python:
     - 3.5
 
 before_install:
-    sudo apt-get install -qq libreoffice-writer
+    - sudo add-apt-repository ppa:libreoffice/libreoffice-4-4 -y
+    - sudo apt-get update -qq
+    - sudo apt-get install -qq libreoffice
 
 script:
     python setup.py test
