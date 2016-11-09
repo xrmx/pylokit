@@ -2,7 +2,7 @@ pylokit
 =======
 
 A python CFFI wrapper for LibreOfficeKit. Tested in cpython2,
-cpython3, and pypy.
+cpython3, and pypy. LibreOfficeKit currently works only on Linux systems.
 
 Requirements
 ------------
@@ -13,6 +13,8 @@ If you are using cpython you need *libffi-dev* in order to compile CFFI.
 
 Installation
 ------------
+
+You are encouraged to install pylokit on a python *virtualenv*.
 
 .. code:: bash
 
