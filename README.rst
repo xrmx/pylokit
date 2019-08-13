@@ -61,4 +61,4 @@ circumstances LibreOffice segfaults on process exit.
 Acknowledgements
 ----------------
 
-Project inspired by Olly Betts' `lloconv <https://github.com/ojwb/lloconv>`_.
+Project inspired by Olly Betts' `lloconv <https://gitlab.com/ojwb/lloconv>`_.
