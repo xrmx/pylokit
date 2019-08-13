@@ -1,16 +1,15 @@
 # http://docs.travis-ci.com/user/languages/python/
 
-dist: trusty
+dist: xenial
 
 language: python
 python:
     - 2.7
     - pypy
-    - 3.4
-    - 3.5
+    - 3.6
 
 before_install:
-    - sudo add-apt-repository ppa:libreoffice/libreoffice-4-4 -y
+    - sudo add-apt-repository ppa:libreoffice/libreoffice-6-1 -y
     - sudo apt-get update -qq
     - sudo apt-get install -qq libreoffice
 
@@ -18,4 +17,3 @@ script:
     python setup.py test
 
 sudo: required
-
